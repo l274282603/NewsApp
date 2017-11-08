@@ -12,7 +12,7 @@ import com.leijx.newsapp.R;
 import com.leijx.newsapp.bean.NewsChannelBean;
 import com.leijx.newsapp.event.ChannelItemMoveEvent;
 import com.leijx.newsapp.event.RxBus;
-import com.leijx.newsapp.wigdet.ItemDragHelperCallback;
+import com.leijx.newsapp.widget.ItemDragHelperCallback;
 
 import java.util.Collections;
 import java.util.List;

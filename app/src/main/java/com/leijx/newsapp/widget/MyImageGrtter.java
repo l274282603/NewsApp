@@ -1,4 +1,4 @@
-package com.leijx.newsapp.wigdet;
+package com.leijx.newsapp.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

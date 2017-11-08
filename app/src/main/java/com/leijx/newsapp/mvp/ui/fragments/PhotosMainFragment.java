@@ -1,12 +1,11 @@
 package com.leijx.newsapp.mvp.ui.fragments;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
-import com.aspsine.irecyclerview.IRecyclerView;
-import com.aspsine.irecyclerview.OnLoadMoreListener;
-import com.aspsine.irecyclerview.OnRefreshListener;
 import com.leijx.newsapp.R;
 import com.leijx.newsapp.bean.PhotoDataBean;
 import com.leijx.newsapp.mvp.presenter.impl.PhotoListPresenterImpl;
@@ -29,7 +28,10 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
     private static final String TAG = "PhotosMain_leijx";
 
     @BindView(R.id.iRecyclerView)
-    IRecyclerView iRecyclerView;
+    RecyclerView iRecyclerView;
+
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;
 
     private List<PhotoDataBean.PhotoImageBean> photoImageBeanList = new ArrayList<>();
     private PhotoListAdapter photoListAdapter;
@@ -52,16 +54,12 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
 
         photoListAdapter = new PhotoListAdapter(getActivity(),photoImageBeanList);
         iRecyclerView.setAdapter(photoListAdapter);
-        iRecyclerView.setOnRefreshListener(new OnRefreshListener() {
+
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-//                Log.d(TAG,"onRefresh");
-            }
-        });
-        iRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-//                Log.d(TAG,"onLoadMore");
+                presenter.referdata();
             }
         });
     }
@@ -106,6 +104,9 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
     @Override
     public void setPhotoList(List<PhotoDataBean.PhotoImageBean> list) {
         Log.d(TAG,"setPhotoList");
+        if(swipeRefresh.isRefreshing()){
+            swipeRefresh.setRefreshing(false);
+        }
         photoImageBeanList = list;
         photoListAdapter.setList(photoImageBeanList);
     }

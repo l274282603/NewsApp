@@ -18,7 +18,7 @@ import com.leijx.newsapp.mvp.presenter.impl.NewsChanelPresenterImpl;
 import com.leijx.newsapp.mvp.ui.acyivitis.base.BaseActivity;
 import com.leijx.newsapp.mvp.ui.adapter.NewsChannelAdapter;
 import com.leijx.newsapp.mvp.ui.baseviewimple.NewChannelView;
-import com.leijx.newsapp.wigdet.ItemDragHelperCallback;
+import com.leijx.newsapp.widget.ItemDragHelperCallback;
 
 import java.util.List;
 

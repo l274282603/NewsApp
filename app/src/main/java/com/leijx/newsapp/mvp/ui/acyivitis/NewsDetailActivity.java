@@ -19,7 +19,7 @@ import com.leijx.newsapp.bean.NewsDetailBean;
 import com.leijx.newsapp.mvp.presenter.impl.NewsDetailPresenterImpl;
 import com.leijx.newsapp.mvp.ui.acyivitis.base.BaseActivity;
 import com.leijx.newsapp.mvp.ui.baseviewimple.NewsDetailView;
-import com.leijx.newsapp.wigdet.MyImageGrtter;
+import com.leijx.newsapp.widget.MyImageGrtter;
 
 import java.util.List;
 
