@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--新闻Item-->
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/newstitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/image"
+        android:lines="2"
+        android:textSize="18sp"
+        android:textColor="@color/alpha_90_black"
+        android:text="习近平:吹响建设科技强国号角国号角国号角"
+        />
+    <TextView
+        android:id="@+id/summary"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_toRightOf="@+id/image"
+        android:layout_alignLeft="@+id/newstitle"
+        android:layout_below="@+id/newstitle"
+        android:text="科技是国之利器，中国人民生活要好，必须有强大科技。"
+        android:singleLine="true"
+        android:textColor="@color/alpha_70_black"
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/summary"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="09/10/22"
+        android:singleLine="true"
+        android:textColor="@color/alpha_50_black"
+        />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
