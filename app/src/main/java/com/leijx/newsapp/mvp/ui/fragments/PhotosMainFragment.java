@@ -55,13 +55,13 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
         iRecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.d(TAG,"onRefresh");
+//                Log.d(TAG,"onRefresh");
             }
         });
         iRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                Log.d(TAG,"onLoadMore");
+//                Log.d(TAG,"onLoadMore");
             }
         });
     }
