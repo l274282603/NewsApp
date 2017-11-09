@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.leijx.newsapp.App;
+import com.leijx.newsapp.contant.AppConstant;
 import com.leijx.newsapp.dagger.component.DaggerFragmentComponent;
 import com.leijx.newsapp.dagger.component.FragmentComponent;
 import com.leijx.newsapp.dagger.module.FragmentModule;
@@ -86,6 +87,13 @@ public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
 
     protected void startAcitivty(Context context, Class cls){
         Intent i = new Intent(context,cls);
+        context.startActivity(i);
+
+    }
+
+    protected void startAcitivty(Context context, Class cls, String url){
+        Intent i = new Intent(context,cls);
+        i.putExtra(AppConstant.PHOTOSRC,url);
         context.startActivity(i);
 
     }

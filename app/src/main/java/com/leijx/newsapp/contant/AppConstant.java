@@ -69,4 +69,6 @@ public class AppConstant {
         return BASEURL_News;
     }
 
+    public static final String PHOTOSRC = "PhotoSrc";
+
 }

@@ -33,6 +33,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<MyphotoViewHolder> {
     private static final String TAG = "PhotoListAdapter";
     private Map<Integer, Integer> heightMap = new HashMap<>();
     private int imagewidth;
+    private OnItemClickListener onItemClickListener;
     public PhotoListAdapter(Context context, List<PhotoDataBean.PhotoImageBean> list){
         this.context = context;
         this.list = list;
@@ -41,7 +42,14 @@ public class PhotoListAdapter extends RecyclerView.Adapter<MyphotoViewHolder> {
     public MyphotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d(TAG,"MyphotoViewHolder");
         View view = LayoutInflater.from(context).inflate(R.layout.item_photo_layout, parent, false);
-        return new MyphotoViewHolder(view);
+        final MyphotoViewHolder myphotoViewHolder = new MyphotoViewHolder(view);
+        myphotoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(v,list.get(myphotoViewHolder.getLayoutPosition()));
+            }
+        });
+        return myphotoViewHolder;
     }
 
     @Override
@@ -137,10 +145,15 @@ public class PhotoListAdapter extends RecyclerView.Adapter<MyphotoViewHolder> {
         notifyDataSetChanged();
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        return position;
-//    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, PhotoDataBean.PhotoImageBean photoImageBean);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
 }
 
 

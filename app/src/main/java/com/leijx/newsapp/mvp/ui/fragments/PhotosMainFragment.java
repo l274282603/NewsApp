@@ -9,6 +9,7 @@ import android.view.View;
 import com.leijx.newsapp.R;
 import com.leijx.newsapp.bean.PhotoDataBean;
 import com.leijx.newsapp.mvp.presenter.impl.PhotoListPresenterImpl;
+import com.leijx.newsapp.mvp.ui.acyivitis.PhotoDetailActivity;
 import com.leijx.newsapp.mvp.ui.adapter.PhotoListAdapter;
 import com.leijx.newsapp.mvp.ui.baseviewimple.PhotoListView;
 import com.leijx.newsapp.mvp.ui.fragments.base.BaseFragment;
@@ -53,6 +54,12 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
         iRecyclerView.setLayoutManager(staggeredGridLayoutManager);
 
         photoListAdapter = new PhotoListAdapter(getActivity(),photoImageBeanList);
+        photoListAdapter.setOnItemClickListener(new PhotoListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, PhotoDataBean.PhotoImageBean photoImageBean) {
+                startAcitivty(getActivity(), PhotoDetailActivity.class, photoImageBean.getUrl());
+            }
+        });
         iRecyclerView.setAdapter(photoListAdapter);
 
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);

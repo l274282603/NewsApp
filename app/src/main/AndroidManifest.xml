@@ -28,6 +28,7 @@
         <activity android:name=".mvp.ui.acyivitis.HomePageActivity" />
         <activity android:name=".mvp.ui.acyivitis.NewsDetailActivity" />
         <activity android:name=".mvp.ui.acyivitis.NewsChannelActivity" />
+        <activity android:name=".mvp.ui.acyivitis.PhotoDetailActivity" />
     </application>
 
 </manifest>
