@@ -4,13 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
-        android:id="@+id/fragment_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/tab_layout">
 
-    </FrameLayout>
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
@@ -27,5 +21,13 @@
         app:tl_underline_height="0dp">
 
     </com.flyco.tablayout.CommonTabLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tab_layout">
+
+    </FrameLayout>
 
 </RelativeLayout>

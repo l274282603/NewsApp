@@ -1,7 +1,6 @@
 package com.leijx.newsapp.mvp.ui.fragments;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.leijx.newsapp.R;
 import com.leijx.newsapp.mvp.ui.fragments.base.BaseFragment;
@@ -13,13 +12,14 @@ import com.leijx.newsapp.mvp.ui.fragments.base.BaseFragment;
 public class CareMainFragment extends BaseFragment {
     @Override
     protected int getLayout() {
-        return R.layout.testlayout;
+//        return R.layout.testlayout;
+        return R.layout.test;
     }
 
     @Override
     protected void initview(View view) {
-        TextView textView = (TextView) view.findViewById(R.id.test_text);
-        textView.setText("CareMainFragment");
+//        TextView textView = (TextView) view.findViewById(R.id.test_text);
+//        textView.setText("CareMainFragment");
     }
 
     @Override

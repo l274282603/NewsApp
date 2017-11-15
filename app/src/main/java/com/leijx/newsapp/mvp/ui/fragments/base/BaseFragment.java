@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,16 +44,11 @@ public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         initData();
-//        if(mFragmentView == null){
-            mFragmentView = inflater.inflate(getLayout(), container, false);
-            ViewGroup p = (ViewGroup) mFragmentView.getParent();
-            if (p != null) {
-                p.removeAllViewsInLayout();
-            }
+        mFragmentView = inflater.inflate(getLayout(), container, false);
         ButterKnife.bind(this, mFragmentView);
-            initview(mFragmentView);
-//        }
+        initview(mFragmentView);
         initPresenter();
+        Log.d("","mFragmentView = "+mFragmentView);
         return mFragmentView;
     }
 

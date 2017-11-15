@@ -3,6 +3,7 @@ package com.leijx.newsapp.network;
 import com.leijx.newsapp.bean.NewsDetailBean;
 import com.leijx.newsapp.bean.Newsbean;
 import com.leijx.newsapp.bean.PhotoDataBean;
+import com.leijx.newsapp.bean.VideoDataBean;
 import com.leijx.newsapp.contant.AppConstant;
 
 import java.util.List;
@@ -65,6 +66,10 @@ public class RetrofitManager {
 
     public Observable<PhotoDataBean> getPhotoList(int size, int page){
         return getNewsInfoInterface.getPhotoList(size,page);
+    }
+
+    public Observable<Map<String, List<VideoDataBean>>> getVideoList(String typeid, int startpage){
+        return getNewsInfoInterface.getVideoList(typeid, startpage);
     }
 
 }

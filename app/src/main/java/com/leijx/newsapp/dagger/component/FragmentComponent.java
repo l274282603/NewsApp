@@ -9,6 +9,8 @@ import com.leijx.newsapp.dagger.module.FragmentModule;
 import com.leijx.newsapp.mvp.ui.fragments.NewsListFragment;
 import com.leijx.newsapp.mvp.ui.fragments.NewsMainFragment;
 import com.leijx.newsapp.mvp.ui.fragments.PhotosMainFragment;
+import com.leijx.newsapp.mvp.ui.fragments.VideoListFragment;
+import com.leijx.newsapp.mvp.ui.fragments.VideoMainFragment;
 
 import dagger.Component;
 
@@ -31,5 +33,9 @@ public interface FragmentComponent {
     void inject(NewsListFragment newsMainFragment);
 
     void inject(PhotosMainFragment photosMainFragment);
+
+    void inject(VideoListFragment videoListFragment);
+
+    void inject(VideoMainFragment videoListFragment);
 
 }

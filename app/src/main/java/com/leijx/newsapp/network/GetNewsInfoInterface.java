@@ -3,6 +3,7 @@ package com.leijx.newsapp.network;
 import com.leijx.newsapp.bean.NewsDetailBean;
 import com.leijx.newsapp.bean.Newsbean;
 import com.leijx.newsapp.bean.PhotoDataBean;
+import com.leijx.newsapp.bean.VideoDataBean;
 
 import java.util.List;
 import java.util.Map;
@@ -55,4 +56,7 @@ public interface GetNewsInfoInterface {
 
     @GET("data/福利/{size}/{page}")
     Observable<PhotoDataBean> getPhotoList(@Path("size") int size, @Path("page") int page);
+
+    @GET("/nc/video/list/{typeid}/n/{startpage}-10.html")
+    Observable<Map<String, List<VideoDataBean>>> getVideoList(@Path("typeid") String typeid, @Path("startpage") int startpage);
 }

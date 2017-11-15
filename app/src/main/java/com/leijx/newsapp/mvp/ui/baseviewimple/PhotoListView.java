@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface PhotoListView extends BaseView {
-    void setPhotoList(List<PhotoDataBean.PhotoImageBean> list);
+    void setPhotoList(List<PhotoDataBean.PhotoImageBean> list, int type);
 }

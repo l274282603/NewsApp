@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <cn.jzvd.JZVideoPlayerStandard
+            android:id="@+id/jZVideoPlayerStandard"
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+        </cn.jzvd.JZVideoPlayerStandard>
+        
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/jZVideoPlayerStandard"/>
+        <TextView
+            android:id="@+id/tv_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/alpha_50_black"
+            android:gravity="center"
+            android:text="test"
+            android:layout_alignBottom="@id/logo"
+            android:layout_toRightOf="@id/logo"
+            android:layout_alignTop="@id/logo"/>
+        <TextView
+            android:id="@+id/tv_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/alpha_50_black"
+            android:text="10次播放"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,18 +1,21 @@
 package com.leijx.newsapp.mvp.ui.fragments;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
+import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
+import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.leijx.newsapp.R;
 import com.leijx.newsapp.bean.PhotoDataBean;
+import com.leijx.newsapp.contant.AppConstant;
 import com.leijx.newsapp.mvp.presenter.impl.PhotoListPresenterImpl;
 import com.leijx.newsapp.mvp.ui.acyivitis.PhotoDetailActivity;
 import com.leijx.newsapp.mvp.ui.adapter.PhotoListAdapter;
 import com.leijx.newsapp.mvp.ui.baseviewimple.PhotoListView;
 import com.leijx.newsapp.mvp.ui.fragments.base.BaseFragment;
+import com.leijx.newsapp.widget.RecyclerViewRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +34,8 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
     @BindView(R.id.iRecyclerView)
     RecyclerView iRecyclerView;
 
-    @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.pullToRefreshLayout)
+    PullToRefreshLayout pullToRefreshLayout;
 
     private List<PhotoDataBean.PhotoImageBean> photoImageBeanList = new ArrayList<>();
     private PhotoListAdapter photoListAdapter;
@@ -62,13 +65,26 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
         });
         iRecyclerView.setAdapter(photoListAdapter);
 
-        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+//        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                presenter.referdata();
+//            }
+//        });
+        pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
-            public void onRefresh() {
+            public void refresh() {
                 presenter.referdata();
             }
+
+            @Override
+            public void loadMore() {
+                presenter.loadmore();
+            }
         });
+
+        pullToRefreshLayout.setHeaderView(new RecyclerViewRefreshView(getActivity()));
     }
 
     @Override
@@ -109,12 +125,30 @@ public class PhotosMainFragment extends BaseFragment<PhotoListPresenterImpl> imp
     }
 
     @Override
-    public void setPhotoList(List<PhotoDataBean.PhotoImageBean> list) {
+    public void setPhotoList(List<PhotoDataBean.PhotoImageBean> list, int type) {
         Log.d(TAG,"setPhotoList");
-        if(swipeRefresh.isRefreshing()){
-            swipeRefresh.setRefreshing(false);
+//        if(swipeRefresh.isRefreshing()){
+//            swipeRefresh.setRefreshing(false);
+//        }
+        switch (type){
+            case AppConstant.REFERSHPHOTO_SUCESS:
+                pullToRefreshLayout.finishRefresh();
+                photoImageBeanList = list;
+                photoListAdapter.setList(photoImageBeanList);
+                break;
+            case AppConstant.REFERSHPHOTO_FAIL:
+                pullToRefreshLayout.finishRefresh();
+                break;
+            case AppConstant.LOADMOREPHOTO_SUCESS:
+                pullToRefreshLayout.finishLoadMore();
+                photoImageBeanList.addAll(list);
+                photoListAdapter.setList(photoImageBeanList);
+                break;
+            case AppConstant.LOADMOREPHOTO_FAIL:
+                pullToRefreshLayout.finishLoadMore();
+                break;
+
         }
-        photoImageBeanList = list;
-        photoListAdapter.setList(photoImageBeanList);
+
     }
 }

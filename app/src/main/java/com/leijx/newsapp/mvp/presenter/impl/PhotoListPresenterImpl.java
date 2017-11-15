@@ -3,6 +3,7 @@ package com.leijx.newsapp.mvp.presenter.impl;
 import android.support.annotation.NonNull;
 
 import com.leijx.newsapp.bean.PhotoDataBean;
+import com.leijx.newsapp.contant.AppConstant;
 import com.leijx.newsapp.listener.RequestCallBack;
 import com.leijx.newsapp.mvp.model.base.PhotoListModel;
 import com.leijx.newsapp.mvp.model.impl.PhotoListModelImpl;
@@ -34,14 +35,16 @@ public class PhotoListPresenterImpl implements BasePresenter,RequestCallBack<Lis
     public void success(@NonNull List<PhotoDataBean.PhotoImageBean> data) {
         if(data != null && data.size()>0){
             page++;
-            photoListView.setPhotoList(data);
         }
+        int type = isRefershNews ? AppConstant.REFERSHPHOTO_SUCESS : AppConstant.LOADMOREPHOTO_SUCESS;
+        photoListView.setPhotoList(data, type);
 
     }
 
     @Override
     public void faile() {
-
+        int type = isRefershNews ? AppConstant.REFERSHPHOTO_FAIL : AppConstant.LOADMOREPHOTO_FAIL;
+        photoListView.setPhotoList(null, type);
     }
 
     @Override
